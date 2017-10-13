@@ -1,0 +1,3 @@
+﻿  Assembling t2.asm...
+t2.asm(13): error A2006: undefined symbol : minx64
+D:\Program Files\Visual Studio Enterprise\Common7\IDE\VC\VCTargets\BuildCustomizations\masm.targets(50,5): error MSB3721: The command "ml64.exe /c /nologo /Zi /Fo"x64\Debug\t2.obj" /W3 /errorReport:prompt  /Tat2.asm" exited with code 1.
