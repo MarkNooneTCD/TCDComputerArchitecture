@@ -13,8 +13,9 @@
 //
 
 extern "C" _int64 minx64(_int64, _int64, _int64);
-//extern "C" _int64 p(_int64, _int64, _int64, _int64);
-//extern "C" _int64 gcd(_int64, _int64);
-//extern "C" _int64 q(_int64, _int64, _int64, _int64, _int64);
+extern "C" _int64 px64(_int64, _int64, _int64, _int64);
+extern "C" _int64 gcdx64(_int64, _int64);
+extern "C" _int64 qx64(_int64, _int64, _int64, _int64, _int64);
+
 
 // eof

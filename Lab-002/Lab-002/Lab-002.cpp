@@ -10,10 +10,9 @@
 #include <iostream>			// cout
 #include <conio.h>			// _getch
 #include "t2.h"	
-#include "stdafx.h"
 
 using namespace std;		// cout
-
+_int64 g = 4;
 //
 // check
 //
@@ -38,11 +37,11 @@ int main(int argc, char* argv[]) {
 	//
 	// tutorial 2
 	//
-	//check("g", g, 4);
-	//g++;
-	//check("g", g, 5);
-	//g--;
-	//check("g", g, 4);
+	check("g", g, 4);
+	g++;
+	check("g", g, 5);
+	g--;
+	check("g", g, 4);
 
 	check("min(1, 2, 3)", minx64(1, 2, 3), 1);
 	check("min(3, 1, 2)", minx64(3, 1, 2), 1);
@@ -54,16 +53,16 @@ int main(int argc, char* argv[]) {
 	check("min(3, -1, 2)", minx64(3, -1, 2), -1);
 	check("min(2, 3, -1)", minx64(2, 3, -1), -1);
 
-	//check("p(0, 1, 2, 3)", p(0, 1, 2, 3), 0);
-	//check("p(5, 6, 7, 8)", p(5, 6, 7, 8), 4);
-	//check("p(3, 2, 1, 0)", p(3, 2, 1, 0), 0);
-	//check("p(8, 7, 6, 5)", p(8, 7, 6, 5), 4);
+	check("px64(0, 1, 2, 3)", px64(0, 1, 2, 3), 0);
+	check("px64(5, 6, 7, 8)", px64(5, 6, 7, 8), 4);
+	check("px64(3, 2, 1, 0)", px64(3, 2, 1, 0), 0);
+	check("px64(8, 7, 6, 5)", px64(8, 7, 6, 5), 4);
 
-	//check("gcd(14, 21)", gcd(14, 21), 7);
-	//check("gcd(1406700, 164115)", gcd(1406700, 164115), 23445);
+	check("gcdx64(14, 21)", gcdx64(14, 21), 7);
+	check("gcdx64(1406700, 164115)", gcdx64(1406700, 164115), 23445);
 
-	//check("q(1, 2, 3, 4, 5)", q(1, 2, 3, 4, 5), 15);
-	//check("q(-1, 2, -3, 4, -5)", q(-1, 2, -3, 4, -5), -3);
+	check("qx64(1, 2, 3, 4, 5)", qx64(1, 2, 3, 4, 5), 15);
+	check("qx64(-1, 2, -3, 4, -5)", qx64(-1, 2, -3, 4, -5), -3);
 
 	//check("qns()", qns(), 0);
 

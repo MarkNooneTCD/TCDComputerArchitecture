@@ -1,7 +1,11 @@
 option casemap:none
+includelib legacy_stdio_definitions.lib
+extrn printf:near
 
 .data
-	g DD 4
+	g:
+	DD 4
+	
 .code
 
 ;
@@ -12,70 +16,76 @@ option casemap:none
 
 public	minx64
 
-min0:	mov		rax, rcx			; v = a
+minx64:	mov		rax, rcx			; v = a
 		cmp		rax, rdx
-		jge		min1
+		jle		min1
 		mov		rax, rdx
 min1:	cmp		rax, r8
-		jge		min2
+		jle		min2
 		mov		rax, r8
-min2:	ret		0
+min2:	ret		
 
 
-;public	p
+public	px64
 
-;p0:		push	rbp
-;		mov		rbp, rsp
-;		sub		rsp, 32
-;		mov		r10, rcx
-;		mov		r11, rdx
-;		mov		r12, r8
-;
-;		mov		r8,  rdx
-;		mov		rdx, rcx
-;		mov		rcx, [g]
-;		call	min
-;
-;		mov		rcx, rax
-;		mov		rdx, r12
-;		mov		r8,	 r9
-;		call	min
-;		ret		0
+px64:	mov		r10,g
+		mov		r12, r8
+
+		mov		r8,  rdx
+		mov		rdx, rcx
+		mov		rcx, [r10]
+		call	minx64
+
+		mov		rcx, rax
+		mov		rdx, r12
+		mov		r8,	 r9
+		call	minx64
+
+		ret		
 		
 
-;public	gcd
-;
-;gcd0:	push 	ebp				; Push Frame Pointer
-;		mov     ebp, esp        ; update ebp
-;		sub     esp, 4          ; space for local variables
-;
-;		xor		eax, eax
-;		jne		function_gcd1
-;		mov		eax, [ebp+8]
-;		mov 	esp, ebp
-;		pop 	ebp
-;		ret 	0
-;
-;gcd1:	xor		edx,edx
-;		mov		eax,[ebp+8]     ; eax = a
-;		mov		ecx,[ebp+12]    ; ecx = b
-;		div		ecx             ; a/b
-;		mov		eax,edx         ; remainder(a mod b)
-;
-;		push	eax
-;		mov		ebx, [ebp+12]
-;		push	ebx
-;		call	function_gdc
-;		add		esp, 8
-;
-;		mov 	esp, ebp
-;		pop 	ebp
-;		ret 	0
-;
-;
-;public	q
-;
-;q0:		
+public	gcdx64
+
+gcdx64:	xor		rax, rax
+		cmp     rax, rdx
+		jne		gcd1
+		mov		rax, rcx
+		ret 	
+
+gcd1:	mov		rax, rcx 
+		mov		rcx, rdx
+		xor		rdx, rdx
+		idiv	rcx    
+		call	gcdx64
+
+		ret 	
+
+
+fxp2 db 'a = %I64d, b = %I64d, c = %I64d, d = %I64d, e = %I64d, a+b+c+d+e = %I64d', 0AH, 00H
+public	qx64
+
+qx64:	
+		xor		r11, r11
+		mov		r12, [rsp+40]
+		add		r11, r12
+		add		r11, r9
+		add		r11, r8
+		add		r11, rdx
+		add		r11, rcx
+		
+		push	r11
+		push	r12
+		push	r9
+
+		mov		r9, r8
+		mov		r8, rdx
+		mov		rdx, rcx
+		lea		rcx, fxp2
+		sub		rsp, 32
+		call	printf	
+		add		rsp, 48
+		pop		rax
+		ret
 
 
 end
