@@ -87,5 +87,29 @@ qx64:
 		pop		rax
 		ret
 
+public	qnsx64
+
+qnsx64:	
+		xor		r11, r11
+		mov		r12, [rsp+40]
+		add		r11, r12
+		add		r11, r9
+		add		r11, r8
+		add		r11, rdx
+		add		r11, rcx
+		
+		push	r11
+		push	r12
+		push	r9
+
+		mov		r9, r8
+		mov		r8, rdx
+		mov		rdx, rcx
+		lea		rcx, fxp2
+		call	printf	
+		add		rsp, 16
+		pop		rax
+		ret
+
 
 end

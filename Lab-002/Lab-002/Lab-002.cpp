@@ -64,9 +64,10 @@ int main(int argc, char* argv[]) {
 	check("qx64(1, 2, 3, 4, 5)", qx64(1, 2, 3, 4, 5), 15);
 	check("qx64(-1, 2, -3, 4, -5)", qx64(-1, 2, -3, 4, -5), -3);
 
-	//check("qns()", qns(), 0);
+	check("qnsx64(1, 2, 3, 4, 5)", qnsx64(1, 2, 3, 4, 5), 15);
+	check("qnsx64(-1, 2, -3, 4, -5)", qnsx64(-1, 2, -3, 4, -5), -3);
 
-	//cout << endl;
+	cout << endl;
 
 	return 0;
 
